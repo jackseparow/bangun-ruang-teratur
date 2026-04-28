@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Polyhedron Logic - Blockly</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Polyhedron Workshop: Truncation & Rectification</h1>
+    </header>
+    
+    <div id="main-container">
+        <div id="blocklyDiv"></div>
+        
+        <div id="output-panel">
+            <h3>Console Log:</h3>
+            <div id="log">Susun blok untuk melihat transformasi...</div>
+        </div>
+    </div>
+
+    <xml id="toolbox" style="display: none">
+        <category name="Bangun Dasar" colour="#5b67a5">
+            <block type="base_shape"></block>
+        </category>
+        <category name="Transformasi" colour="#995ba5">
+            <block type="truncate_shape"></block>
+            <block type="rectify_shape"></block>
+        </category>
+    </xml>
+
+    <script src="blocks.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
