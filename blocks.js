@@ -1,50 +1,50 @@
-// Blok Bangun Dasar
+// 1. Blok Bangun Dasar (Output: Shape)
 Blockly.Blocks['base_shape'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Bangun:")
-        .appendField(new Blockly.FieldDropdown([
-            ["Kubus","CUBE"], 
-            ["Tetrahedron","TETRA"], 
-            ["Oktahedron","OCTA"]
-        ]), "SHAPE");
+        .appendField(new Blockly.FieldDropdown([["Kubus","CUBE"], ["Tetrahedron","TETRA"], ["Oktahedron","OCTA"]]), "SHAPE");
     this.setOutput(true, "Shape");
     this.setColour(230);
   }
 };
 
-// Blok Truncate
+// 2. Blok Truncate (Nested + Input Kedalaman)
 Blockly.Blocks['truncate_shape'] = {
   init: function() {
     this.appendValueInput("INPUT")
         .setCheck("Shape")
         .appendField("Pancung (Truncate)");
+    this.appendDummyInput()
+        .appendField("Kedalaman:")
+        .appendField(new Blockly.FieldNumber(0.3, 0, 0.5), "DEPTH");
     this.setOutput(true, "Shape");
     this.setColour(290);
   }
 };
 
-// Blok Rectify
+// 3. Blok Rectify (Nested)
 Blockly.Blocks['rectify_shape'] = {
   init: function() {
     this.appendValueInput("INPUT")
         .setCheck("Shape")
-        .appendField("Rectify (Tengah Rusuk)");
+        .appendField("Rectify");
     this.setOutput(true, "Shape");
     this.setColour(290);
   }
 };
 
-// Generator JavaScript Sederhana
+// Generator JavaScript
 Blockly.JavaScript = new Blockly.Generator('JavaScript');
 Blockly.JavaScript['base_shape'] = function(block) {
-  return [block.getFieldValue('SHAPE'), Blockly.JavaScript.ORDER_ATOMIC];
+  return [block.getFieldValue('SHAPE'), 0];
 };
 Blockly.JavaScript['truncate_shape'] = function(block) {
-  var input = Blockly.JavaScript.valueToCode(block, 'INPUT', Blockly.JavaScript.ORDER_ATOMIC);
-  return ["TRUNCATED_" + input, Blockly.JavaScript.ORDER_ATOMIC];
+  var input = Blockly.JavaScript.valueToCode(block, 'INPUT', 0) || 'NONE';
+  var depth = block.getFieldValue('DEPTH');
+  return ["TRUNCATED_" + input + "_DEPTH_" + depth, 0];
 };
 Blockly.JavaScript['rectify_shape'] = function(block) {
-  var input = Blockly.JavaScript.valueToCode(block, 'INPUT', Blockly.JavaScript.ORDER_ATOMIC);
-  return ["RECTIFIED_" + input, Blockly.JavaScript.ORDER_ATOMIC];
+  var input = Blockly.JavaScript.valueToCode(block, 'INPUT', 0) || 'NONE';
+  return ["RECTIFIED_" + input, 0];
 };
