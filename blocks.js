@@ -1,3 +1,4 @@
+// Konfigurasi Blok Bangun
 Blockly.Blocks['base_shape'] = {
   init: function() {
     this.appendDummyInput()
@@ -8,15 +9,17 @@ Blockly.Blocks['base_shape'] = {
   }
 };
 
+// Blok Pancung (Truncate) - Mendukung Nested & Input Kedalaman
 Blockly.Blocks['truncate_shape'] = {
   init: function() {
     this.appendValueInput("INPUT").setCheck("Shape").appendField("Pancung (Truncate)");
-    this.appendDummyInput().appendField("Kedalaman:").appendField(new Blockly.FieldNumber(0.3, 0, 0.5), "DEPTH");
+    this.appendDummyInput().appendField("Kedalaman:").appendField(new Blockly.FieldNumber(0.3, 0.1, 0.5), "DEPTH");
     this.setOutput(true, "Shape");
     this.setColour(290);
   }
 };
 
+// Blok Rectification
 Blockly.Blocks['rectify_shape'] = {
   init: function() {
     this.appendValueInput("INPUT").setCheck("Shape").appendField("Rectification");
@@ -25,10 +28,11 @@ Blockly.Blocks['rectify_shape'] = {
   }
 };
 
-// Generator Logika
+// Generator JavaScript Khusus
 Blockly.JavaScript = new Blockly.Generator('JavaScript');
 Blockly.JavaScript['base_shape'] = function(block) {
-  return ["'" + block.getFieldValue('SHAPE') + "'", 0];
+  var code = block.getFieldValue('SHAPE');
+  return ["'" + code + "'", 0];
 };
 
 Blockly.JavaScript['truncate_shape'] = function(block) {
