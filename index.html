@@ -3,21 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Polyhedron Logic - Blockly</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Eksplorasi Bangun Ruang Teratur</title>
+    
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Polyhedron Workshop: Truncation & Rectification</h1>
+        <div class="header-content">
+            <img src="maskot-siyo.png" alt="Si Yo" class="maskot">
+            <div class="title-area">
+                <h1>Eksplorasi Bangun Ruang Teratur</h1>
+                <p class="instruction">Susun blok di bawah untuk melakukan transformasi geometri (Truncation & Rectification) secara langsung!</p>
+            </div>
+        </div>
     </header>
     
-    <div id="main-container">
+    <div id="app-container">
         <div id="blocklyDiv"></div>
         
-        <div id="output-panel">
-            <h3>Console Log:</h3>
-            <div id="log">Susun blok untuk melihat transformasi...</div>
+        <div id="visualization">
+            <div id="canvas-caption">Tampilan 3D</div>
         </div>
     </div>
 
