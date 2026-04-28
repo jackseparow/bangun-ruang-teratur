@@ -1,0 +1,18 @@
+body { font-family: sans-serif; margin: 0; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
+header { background: #2c3e50; color: white; padding: 1rem; text-align: center; }
+
+#main-container {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row; /* Desktop default */
+}
+
+#blocklyDiv { flex: 2; height: 100%; }
+#output-panel { flex: 1; background: #ecf0f1; padding: 20px; border-left: 2px solid #bdc3c7; }
+
+/* Responsive: Layout berubah jadi tumpuk di HP */
+@media (max-width: 768px) {
+    #main-container { flex-direction: column; }
+    #blocklyDiv { height: 60%; }
+    #output-panel { height: 40%; border-left: none; border-top: 2px solid #bdc3c7; }
+}
