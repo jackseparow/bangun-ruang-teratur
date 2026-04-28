@@ -16,16 +16,15 @@
             <img src="maskot-siyo.png" alt="Si Yo" class="maskot">
             <div class="title-area">
                 <h1>Eksplorasi Bangun Ruang Teratur</h1>
-                <p class="instruction">Susun blok di bawah untuk melakukan transformasi geometri (Truncation & Rectification) secara langsung!</p>
+                <p class="instruction">Tarik balok bangun ruang ke dalam balok transformasi (Nested) untuk melihat perubahan struktur geometri.</p>
             </div>
         </div>
     </header>
     
     <div id="app-container">
         <div id="blocklyDiv"></div>
-        
         <div id="visualization">
-            <div id="canvas-caption">Tampilan 3D</div>
+            <div id="canvas-caption">Tampilan Statis 3D</div>
         </div>
     </div>
 
@@ -34,8 +33,16 @@
             <block type="base_shape"></block>
         </category>
         <category name="Transformasi" colour="#995ba5">
-            <block type="truncate_shape"></block>
-            <block type="rectify_shape"></block>
+            <block type="truncate_shape">
+                <value name="INPUT">
+                    <block type="base_shape"></block>
+                </value>
+            </block>
+            <block type="rectify_shape">
+                <value name="INPUT">
+                    <block type="base_shape"></block>
+                </value>
+            </block>
         </category>
     </xml>
 
