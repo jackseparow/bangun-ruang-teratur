@@ -1,15 +1,28 @@
-header { background: #ffffff; padding: 15px 20px; border-bottom: 2px solid #eee; }
-.header-content { display: flex; align-items: center; gap: 20px; }
-.maskot { height: 65px; }
+body { margin: 0; font-family: 'Segoe UI', sans-serif; height: 100vh; display: flex; flex-direction: column; background: #f4f7f6; }
+header { background: #ffffff; padding: 15px 25px; border-bottom: 3px solid #3498db; z-index: 100; }
+.header-content { display: flex; align-items: center; gap: 20px; max-width: 1200px; margin: 0 auto; }
+.maskot { height: 70px; width: auto; }
+.title-area h1 { margin: 0; font-size: 22px; color: #2c3e50; }
+.instruction { margin: 4px 0 10px 0; font-size: 14px; color: #7f8c8d; }
+
 #runBtn {
-    margin-top: 10px;
-    padding: 8px 20px;
+    padding: 10px 25px;
     background-color: #27ae60;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 6px;
     cursor: pointer;
     font-weight: bold;
+    transition: 0.3s;
 }
-#runBtn:hover { background-color: #2ecc71; }
-/* ... (style lainnya tetap sama seperti sebelumnya) */
+#runBtn:hover { background-color: #2ecc71; transform: scale(1.05); }
+
+#app-container { display: flex; flex: 1; overflow: hidden; }
+#blocklyDiv { flex: 1.2; border-right: 1px solid #ddd; }
+#visualization { flex: 1; background: #ffffff; position: relative; }
+#canvas-caption { position: absolute; bottom: 15px; left: 15px; background: #2c3e50; color: white; padding: 5px 15px; border-radius: 20px; font-size: 12px; }
+
+@media (max-width: 768px) {
+    #app-container { flex-direction: column; }
+    #visualization { height: 45%; }
+}
