@@ -1,4 +1,4 @@
-// Konfigurasi Blok Bangun
+// 1. Definisi Visual Blok
 Blockly.Blocks['base_shape'] = {
   init: function() {
     this.appendDummyInput()
@@ -9,7 +9,6 @@ Blockly.Blocks['base_shape'] = {
   }
 };
 
-// Blok Pancung (Truncate)
 Blockly.Blocks['truncate_shape'] = {
   init: function() {
     this.appendValueInput("INPUT").setCheck("Shape").appendField("Pancung (Truncate)");
@@ -19,7 +18,6 @@ Blockly.Blocks['truncate_shape'] = {
   }
 };
 
-// Blok Rectification
 Blockly.Blocks['rectify_shape'] = {
   init: function() {
     this.appendValueInput("INPUT").setCheck("Shape").appendField("Rectification");
@@ -28,26 +26,20 @@ Blockly.Blocks['rectify_shape'] = {
   }
 };
 
-// Generator JavaScript menggunakan format JSON aman
-Blockly.JavaScript = new Blockly.Generator('JavaScript');
-Blockly.JavaScript.ORDER_ATOMIC = 0;
+// 2. Definisi Generator (Solusi Error JavaScript Generator)
+const generator = javascript.javascriptGenerator;
 
-Blockly.JavaScript['base_shape'] = function(block) {
-  var code = block.getFieldValue('SHAPE');
-  // Mengembalikan string tipe dasar
-  return ["\"" + code + "\"", Blockly.JavaScript.ORDER_ATOMIC];
+generator.forBlock['base_shape'] = function(block) {
+  const shape = block.getFieldValue('SHAPE');
+  return ["'" + shape + "'", generator.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['truncate_shape'] = function(block) {
-  var input = Blockly.JavaScript.valueToCode(block, 'INPUT', Blockly.JavaScript.ORDER_ATOMIC) || "\"NONE\"";
-  // Menghapus tanda kutip ganda ekstra dari input nested
-  input = input.replace(/^\"|\"$/g, '');
-  return ["\"TRUNCATED_" + input + "\"", Blockly.JavaScript.ORDER_ATOMIC];
+generator.forBlock['truncate_shape'] = function(block) {
+  const input = generator.valueToCode(block, 'INPUT', generator.ORDER_ATOMIC) || "'NONE'";
+  return ["'TRUNCATED_' + " + input, generator.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['rectify_shape'] = function(block) {
-  var input = Blockly.JavaScript.valueToCode(block, 'INPUT', Blockly.JavaScript.ORDER_ATOMIC) || "\"NONE\"";
-  // Menghapus tanda kutip ganda ekstra dari input nested
-  input = input.replace(/^\"|\"$/g, '');
-  return ["\"RECTIFIED_" + input + "\"", Blockly.JavaScript.ORDER_ATOMIC];
+generator.forBlock['rectify_shape'] = function(block) {
+  const input = generator.valueToCode(block, 'INPUT', generator.ORDER_ATOMIC) || "'NONE'";
+  return ["'RECTIFIED_' + " + input, generator.ORDER_ATOMIC];
 };
