@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eksplorasi Bangun Ruang Teratur</title>
-    
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +14,8 @@
             <img src="maskot-siyo.png" alt="Si Yo" class="maskot">
             <div class="title-area">
                 <h1>Eksplorasi Bangun Ruang Teratur</h1>
-                <p class="instruction">Tarik balok bangun ruang ke dalam balok transformasi (Nested) untuk melihat perubahan struktur geometri.</p>
+                <p class="instruction">Susun balok transformasi secara bertingkat, lalu klik tombol di bawah.</p>
+                <button id="runBtn">Update Visualisasi 3D</button>
             </div>
         </div>
     </header>
@@ -33,16 +32,8 @@
             <block type="base_shape"></block>
         </category>
         <category name="Transformasi" colour="#995ba5">
-            <block type="truncate_shape">
-                <value name="INPUT">
-                    <block type="base_shape"></block>
-                </value>
-            </block>
-            <block type="rectify_shape">
-                <value name="INPUT">
-                    <block type="base_shape"></block>
-                </value>
-            </block>
+            <block type="truncate_shape"></block>
+            <block type="rectify_shape"></block>
         </category>
     </xml>
 
