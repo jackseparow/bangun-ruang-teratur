@@ -1,18 +1,81 @@
-body { font-family: sans-serif; margin: 0; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
-header { background: #2c3e50; color: white; padding: 1rem; text-align: center; }
-
-#main-container {
-    display: flex;
-    flex-grow: 1;
-    flex-direction: row; /* Desktop default */
+:root {
+    --primary: #2c3e50;
+    --accent: #3498db;
+    --bg-light: #f8f9fa;
 }
 
-#blocklyDiv { flex: 2; height: 100%; }
-#output-panel { flex: 1; background: #ecf0f1; padding: 20px; border-left: 2px solid #bdc3c7; }
+body { 
+    margin: 0; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+    height: 100vh; 
+    display: flex; 
+    flex-direction: column;
+    background-color: var(--bg-light);
+}
 
-/* Responsive: Layout berubah jadi tumpuk di HP */
+header {
+    background: white;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 15px 25px;
+    z-index: 10;
+}
+
+.header-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.maskot {
+    height: 70px;
+    width: auto;
+}
+
+.title-area h1 {
+    margin: 0;
+    font-size: 22px;
+    color: var(--primary);
+}
+
+.instruction {
+    margin: 5px 0 0 0;
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+#app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+#blocklyDiv {
+    flex: 1;
+}
+
+#visualization {
+    flex: 1;
+    background: radial-gradient(circle, #ffffff 0%, #d7dde8 100%);
+    position: relative;
+    border-left: 2px solid #e0e0e0;
+}
+
+#canvas-caption {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(44, 62, 80, 0.7);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+/* Responsive untuk HP */
 @media (max-width: 768px) {
-    #main-container { flex-direction: column; }
-    #blocklyDiv { height: 60%; }
-    #output-panel { height: 40%; border-left: none; border-top: 2px solid #bdc3c7; }
+    #app-container { flex-direction: column; }
+    .header-content { flex-direction: column; text-align: center; }
+    #visualization { height: 40%; }
 }
